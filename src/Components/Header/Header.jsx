@@ -1,13 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+import styled from "styled-components";
 
-import "./Header.css";
+const NasaHeader = styled.h1`
+  margin : 100px 0 30px;
+  font-size : 4rem;
+  letter-spacing : 10px; 
+  position: relative;
+`;
+
+const NasaSubTitle = styled.h2`
+  font-size : 2rem;
+  letter-spacing : 5px;
+  margin-bottom : 60px;
+`;
 
 function Header()
 {
   return(
     <header className = "nasaHeader">  
-        <h1 className = "nasaTitle"> NASA </h1>
-        <h2 className = "nasaSubTitle"> Astronomy Photo of the Day </h2>
+        <NasaHeader> NASA </NasaHeader>
+        <NasaSubTitle> Astronomy Photo of the Day </NasaSubTitle>
     </header>
   )
 }

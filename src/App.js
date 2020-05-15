@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PropType from "prop-types";
 
 // css files
 import "./App.css";
@@ -15,7 +14,7 @@ import Description from "./Components/Description/Description";
 function App() 
 {
   const [ counter, setCounter ] = useState( 3 );
-  const [ nasaData, setNasaData ] = useState( { date : "3/21/92", title : "Hello World", url : "", explanation : "LOREM IPSUM" } );
+  const [ nasaData, setNasaData ] = useState( null );
   
   useEffect( () => 
   {
@@ -38,8 +37,13 @@ function App()
   return (
     <div className = "App">
       <Header />
-      { nasaData.url === "" ? <Loader /> :  <Gallery image = { nasaData.url } /> }
-      <Description date = { nasaData.date } title = { nasaData.title } explanation = { nasaData.explanation } />
+      { nasaData ? <Gallery image = { nasaData.url } /> : <Loader /> }
+      { 
+        nasaData ?  <Description date        = { nasaData.date } 
+                                 title       = { nasaData.title } 
+                                 explanation = { nasaData.explanation } /> 
+                    : <Description /> 
+      }
     </div>
   );
 }
